@@ -88,15 +88,9 @@ Cloudflare's default proxy (Orange Cloud) **does not support email ports (25, 46
 3. Configure your domains in the Coolify UI:
    - For `frontend`, set the domain to `https://mail.yourdomain.com` (Coolify provides automated Let's Encrypt SSL).
    - For `stalwart`, set the domain to `https://admin.yourdomain.com:8080`. (Adding `:8080` is **critical** so Coolify knows to route traffic to the admin port instead of the SMTP port).
-4. Add the following to your Environment Variables:
-   ```env
-   ADMIN_MAIL=admin@yourdomain.com
-   ADMIN_PASSWORD=your_secure_password
-   ```
-   *Stalwart will automatically provision this user on the first boot.*
-5. **Deploy!** The necessary email ports (25, 465, 993, etc.) will bind automatically to your host network.
+4. **Deploy!** The necessary email ports (25, 465, 993, etc.) will bind automatically to your host network.
 
-> **Security Note:** Once your master account is created and you have configured your domains via the Admin Panel, it is recommended to remove the `ADMIN_MAIL` and `ADMIN_PASSWORD` environment variables.
+> **Note:** Stalwart will automatically generate a secure master password on the very first boot. Check your Coolify Logs for the Stalwart container to retrieve it!
 
 ## <img src="https://api.iconify.design/mdi/handshake.svg" width="28" height="28" align="center"> Contributing
 

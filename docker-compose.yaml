@@ -14,8 +14,6 @@ services:
       - stalwart-etc-v3:/opt/stalwart-mail/etc
       - stalwart-data-v3:/opt/stalwart-mail/data
       - stalwart-logs-v3:/opt/stalwart-mail/logs
-    environment:
-      - STALWART_RECOVERY_ADMIN=${ADMIN_MAIL:-admin@localhost}:${ADMIN_PASSWORD:-admin123}
     restart: unless-stopped
 
   frontend:
