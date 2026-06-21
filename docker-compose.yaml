@@ -1,6 +1,6 @@
 services:
   stalwart:
-    image: stalwartlabs/mail-server:v0.16.10
+    image: stalwartlabs/stalwart:latest
     container_name: stalwart
     ports:
       - "25:25"     # SMTP
