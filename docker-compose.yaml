@@ -1,6 +1,6 @@
 services:
   stalwart:
-    build: ./stalwart
+    image: stalwartlabs/mail-server:v0.11
     container_name: stalwart
     ports:
       - "25:25"     # SMTP
@@ -11,6 +11,7 @@ services:
     expose:
       - "8080"      # Tell Coolify/Traefik proxy to use this port for HTTP
     volumes:
+      - stalwart-etc:/opt/stalwart/etc
       - stalwart-data:/opt/stalwart/data
       - stalwart-logs:/opt/stalwart/logs
     environment:
@@ -25,5 +26,6 @@ services:
     restart: unless-stopped
 
 volumes:
+  stalwart-etc:
   stalwart-data:
   stalwart-logs:

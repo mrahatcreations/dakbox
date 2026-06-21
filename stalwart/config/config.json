@@ -1,4 +1,0 @@
-{
-  "@type": "Sqlite",
-  "path": "/opt/stalwart/data/stalwart.db"
-}
