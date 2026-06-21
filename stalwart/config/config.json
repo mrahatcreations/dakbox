@@ -1,4 +1,4 @@
 {
   "@type": "Sqlite",
-  "path": "/home/mrahat/Documents/Email server/stalwart/data/stalwart.db"
+  "path": "/opt/stalwart/data/stalwart.db"
 }
