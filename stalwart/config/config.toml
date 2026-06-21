@@ -1,5 +1,5 @@
 [server]
-hostname = "localhost"
+hostname = "smail.saimum.org"
 
 [server.listener."smtp"]
 bind = ["0.0.0.0:2525"]
