@@ -8,6 +8,8 @@ services:
       - "465:465"   # SMTP TLS
       - "587:587"   # SMTP StartTLS
       - "993:993"   # IMAP TLS
+    expose:
+      - "8080"      # Tell Coolify/Traefik proxy to use this port for HTTP
     volumes:
       - ./stalwart/config:/opt/stalwart/config
       - stalwart-data:/opt/stalwart/data
