@@ -2,7 +2,7 @@
 FROM node:18-alpine AS build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install --include=dev
 COPY . .
 # We don't have .env here during build on coolify by default unless injected, 
 # but Vite can use runtime envs if configured, or build-time.
