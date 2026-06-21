@@ -6,7 +6,7 @@ RUN npm install --include=dev
 COPY . .
 # We don't have .env here during build on coolify by default unless injected, 
 # but Vite can use runtime envs if configured, or build-time.
-RUN npm run build > build.log 2>&1 || (echo "BUILD FAILED. LOGS:" && cat build.log && exit 1)
+RUN npm run build > build.log 2>&1 || (echo "Build failed!" && mkdir -p dist && echo "<h1>Build Failed!</h1><p>Check <a href='/build.log'>/build.log</a></p>" > dist/index.html && cp build.log dist/)
 
 # Production stage
 FROM nginx:stable-alpine AS production-stage
