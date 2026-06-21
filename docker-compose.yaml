@@ -11,9 +11,9 @@ services:
     expose:
       - "8080"      # Tell Coolify/Traefik proxy to use this port for HTTP
     volumes:
-      - stalwart-etc:/opt/stalwart/etc
-      - stalwart-data:/opt/stalwart/data
-      - stalwart-logs:/opt/stalwart/logs
+      - stalwart-etc-v2:/opt/stalwart/etc
+      - stalwart-data-v2:/opt/stalwart/data
+      - stalwart-logs-v2:/opt/stalwart/logs
     environment:
       - STALWART_RECOVERY_ADMIN=${ADMIN_MAIL:-admin@localhost}:${ADMIN_PASSWORD:-admin123}
     restart: unless-stopped
@@ -26,6 +26,6 @@ services:
     restart: unless-stopped
 
 volumes:
-  stalwart-etc:
-  stalwart-data:
-  stalwart-logs:
+  stalwart-etc-v2:
+  stalwart-data-v2:
+  stalwart-logs-v2:
