@@ -1,6 +1,6 @@
 services:
   stalwart:
-    image: stalwartlabs/mail-server:v0.11
+    image: stalwartlabs/mail-server:latest
     container_name: stalwart
     ports:
       - "25:25"     # SMTP
@@ -11,9 +11,9 @@ services:
     expose:
       - "8080"      # Tell Coolify/Traefik proxy to use this port for HTTP
     volumes:
-      - stalwart-etc-v2:/opt/stalwart/etc
-      - stalwart-data-v2:/opt/stalwart/data
-      - stalwart-logs-v2:/opt/stalwart/logs
+      - stalwart-etc-v3:/opt/stalwart-mail/etc
+      - stalwart-data-v3:/opt/stalwart-mail/data
+      - stalwart-logs-v3:/opt/stalwart-mail/logs
     environment:
       - STALWART_RECOVERY_ADMIN=${ADMIN_MAIL:-admin@localhost}:${ADMIN_PASSWORD:-admin123}
     restart: unless-stopped
@@ -26,6 +26,6 @@ services:
     restart: unless-stopped
 
 volumes:
-  stalwart-etc-v2:
-  stalwart-data-v2:
-  stalwart-logs-v2:
+  stalwart-etc-v3:
+  stalwart-data-v3:
+  stalwart-logs-v3:
