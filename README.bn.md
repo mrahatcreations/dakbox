@@ -22,21 +22,21 @@
 
 ---
 
-## 📖 প্রজেক্ট সম্পর্কে
+## <img src="https://api.iconify.design/mdi/book-open-variant.svg" width="28" height="28" align="center"> প্রজেক্ট সম্পর্কে
 
 **Dakbox** হলো একটি ওপেন-সোর্স, অত্যন্ত দ্রুত এবং প্রিমিয়াম ওয়েবমেইল ইন্টারফেস যা [Stalwart Mail Server](https://stalw.art/)-এর ওপর ভিত্তি করে তৈরি করা হয়েছে। এটি ধীরগতির IMAP প্রোটোকল ব্যবহার না করে আধুনিক **JMAP (JSON Meta Application Protocol)** ব্যবহার করে, যার ফলে ইমেইল সিঙ্ক হয় চোখের পলকে।
 
 আপনি যদি Google Workspace বা Microsoft 365-এর মতো কোনো সার্ভিস খুঁজেন যা আপনার নিজের সার্ভারে কোনো মাসিক সাবস্ক্রিপশন ছাড়াই চলবে এবং যার ডিজাইন হবে অসাধারণ, তবে Dakbox আপনার জন্যই তৈরি!
 
-## ✨ মূল ফিচারসমূহ
+## <img src="https://api.iconify.design/mdi/star-four-points.svg" width="28" height="28" align="center"> মূল ফিচারসমূহ
 
-- ⚡ **JMAP নির্ভর:** JMAP ব্যবহারের কারণে এটি অন্যান্য সাধারণ ইমেইল ক্লায়েন্টের তুলনায় কয়েকগুণ ফাস্ট।
-- 🎨 **প্রিমিয়াম ডিজাইন:** Vue 3 এবং Vuetify দিয়ে তৈরি একটি "Glassmorphism" স্টাইলের দারুণ ইন্টারফেস।
-- 🛡️ **দুর্দান্ত সিকিউরিটি:** Stalwart-এর শক্তিশালী সিকিউরিটি, যেখানে DMARC, DKIM, SPF এবং Auto-TLS বিল্ট-ইন থাকে।
-- 🪶 **লাইটওয়েট ফ্রন্টএন্ড:** কোনো ভারী Node.js বা PHP ব্যাকএন্ড নেই। পিওর স্ট্যাটিক ফ্রন্টএন্ড সরাসরি ইমেইল সার্ভারের সাথে কথা বলে।
-- 🐳 **Docker-রেডি:** Docker Compose বা Coolify ব্যবহার করে মাত্র ৫ মিনিটে যেকোনো সার্ভারে ডেপ্লয় করা যায়।
+- <img src="https://api.iconify.design/mdi/lightning-bolt.svg" width="20" height="20" align="center"> **JMAP নির্ভর:** JMAP ব্যবহারের কারণে এটি অন্যান্য সাধারণ ইমেইল ক্লায়েন্টের তুলনায় কয়েকগুণ ফাস্ট।
+- <img src="https://api.iconify.design/mdi/palette.svg" width="20" height="20" align="center"> **প্রিমিয়াম ডিজাইন:** Vue 3 এবং Vuetify দিয়ে তৈরি একটি "Glassmorphism" স্টাইলের দারুণ ইন্টারফেস।
+- <img src="https://api.iconify.design/mdi/shield-check.svg" width="20" height="20" align="center"> **দুর্দান্ত সিকিউরিটি:** Stalwart-এর শক্তিশালী সিকিউরিটি, যেখানে DMARC, DKIM, SPF এবং Auto-TLS বিল্ট-ইন থাকে।
+- <img src="https://api.iconify.design/mdi/feather.svg" width="20" height="20" align="center"> **লাইটওয়েট ফ্রন্টএন্ড:** কোনো ভারী Node.js বা PHP ব্যাকএন্ড নেই। পিওর স্ট্যাটিক ফ্রন্টএন্ড সরাসরি ইমেইল সার্ভারের সাথে কথা বলে।
+- <img src="https://api.iconify.design/mdi/docker.svg" width="20" height="20" align="center"> **Docker-রেডি:** Docker Compose বা Coolify ব্যবহার করে মাত্র ৫ মিনিটে যেকোনো সার্ভারে ডেপ্লয় করা যায়।
 
-## 🚀 লোকাল সেটআপ গাইড
+## <img src="https://api.iconify.design/mdi/rocket-launch.svg" width="28" height="28" align="center"> লোকাল সেটআপ গাইড
 
 ### যা যা লাগবে (Prerequisites)
 - Docker এবং Docker Compose
@@ -66,10 +66,23 @@
    ব্রাউজারে `http://localhost:5174` ওপেন করুন। 
    *(প্রথমবার ব্যবহার করার সময় "Create Master Admin"-এ ক্লিক করে অ্যাডমিন প্যানেল থেকে ডোমেইন ও ইউজার তৈরি করে নিতে হবে)।*
 
-## 🌍 প্রোডাকশনে ডেপ্লয় করা (Coolify / VPS)
+## <img src="https://api.iconify.design/mdi/server-network.svg" width="28" height="28" align="center"> প্রোডাকশনে ডেপ্লয় করা (Coolify ও Cloudflare)
 
-Dakbox যেহেতু সম্পূর্ণ ডকারাইজড, তাই এটিকে লাইভ সার্ভারে ডেপ্লয় করা খুবই সহজ। আমরা [Coolify](https://coolify.io/) বা এই ধরনের প্ল্যাটফর্ম ব্যবহারের পরামর্শ দিই।
+Dakbox যেহেতু সম্পূর্ণ ডকারাইজড, তাই এটিকে লাইভ সার্ভারে ডেপ্লয় করা খুবই সহজ। আমরা [Coolify](https://coolify.io/) ব্যবহারের পরামর্শ দিই। তবে আপনি যদি ডোমেইনের জন্য **Cloudflare** ব্যবহার করেন, তবে নিচের নিয়মটি অবশ্যই মানতে হবে।
 
+### ধাপ ১: Cloudflare DNS সেটআপ (গুরুত্বপূর্ণ)
+Cloudflare ইমেইল পোর্ট (যেমন 25) সাপোর্ট করে না। তাই Cloudflare-এ আপনার DNS রেকর্ডগুলো নিচের মতো সেট করতে হবে:
+
+১. **A Records:**
+   - Name: `mail` (ওয়েবমেইলের জন্য) -> Target: `আপনার_IP` -> Proxy: **DNS Only (Grey Cloud)** শুরুতে।
+   - Name: `admin` (অ্যাডমিন প্যানেল) -> Target: `আপনার_IP` -> Proxy: **DNS Only (Grey Cloud)**।
+   - Name: `mx` (ইমেইল রিসিভের জন্য) -> Target: `আপনার_IP` -> Proxy: **DNS Only (Grey Cloud) - এটি সবসময় Grey থাকতে হবে!**
+২. **MX Record:**
+   - Name: `@` -> Target: `mx.yourdomain.com` -> Priority: `10`
+৩. **TXT Records (SPF, DKIM, DMARC):**
+   - ডেপ্লয়মেন্ট শেষ হলে `admin.yourdomain.com`-এ লগিন করলে স্টলওয়ার্ট নিজে থেকেই এই রেকর্ডগুলো জেনারেট করে দেবে, আপনি শুধু কপি করে Cloudflare-এ বসিয়ে দেবেন।
+
+### ধাপ ২: Coolify ডেপ্লয়মেন্ট
 ১. আপনার Coolify ড্যাশবোর্ডে এই রিপোজিটরিটি কানেক্ট করুন।
 ২. ডেপ্লয়মেন্ট মেথড হিসেবে **Docker Compose** সিলেক্ট করুন।
 ৩. Coolify প্যানেলে ডোমেইন সেটআপ করুন:
@@ -81,13 +94,14 @@ Dakbox যেহেতু সম্পূর্ণ ডকারাইজড, ত
    ADMIN_PASSWORD=আপনার_কঠিন_পাসওয়ার্ড
    ```
    *সার্ভার চালু হওয়ার সাথে সাথে এই অ্যাকাউন্টটি অটোমেটিক তৈরি হয়ে যাবে।*
-৫. **ডেপ্লয় করুন!** ইমেইলের জন্য প্রয়োজনীয় সব পোর্ট (25, 465, 993) আপনার সার্ভারের সাথে অটোমেটিক কানেক্ট হয়ে যাবে।
-৬. **DNS সেটআপ:** আপনার ডোমেইনের `A` রেকর্ড, `MX` রেকর্ড এবং Reverse DNS (PTR) আপনার সার্ভারের IP অনুযায়ী সেট করে নিন।
+৫. **ডেপ্লয় করুন!** ইমেইলের জন্য প্রয়োজনীয় সব পোর্ট আপনার সার্ভারের সাথে অটোমেটিক কানেক্ট হয়ে যাবে।
 
 > **সিকিউরিটি টিপস:** একবার অ্যাডমিন প্যানেলে লগিন করে মেইন অ্যাকাউন্ট তৈরি করা হয়ে গেলে, Environment Variables থেকে `ADMIN_MAIL` এবং `ADMIN_PASSWORD` মুছে ফেলাই ভালো।
 
-## 🤝 অবদান (Contributing)
+## <img src="https://api.iconify.design/mdi/handshake.svg" width="28" height="28" align="center"> অবদান (Contributing)
+
 প্রজেক্টটি আরও উন্নত করতে যেকোনো সাহায্য বা Pull Request সাদরে গৃহীত হবে!
 
-## 📄 লাইসেন্স
+## <img src="https://api.iconify.design/mdi/file-document-outline.svg" width="28" height="28" align="center"> লাইসেন্স
+
 এই প্রজেক্টটি MIT লাইসেন্সের অধীনে উন্মুক্ত। বিস্তারিত জানতে [LICENSE](LICENSE) ফাইলটি পড়ুন।
