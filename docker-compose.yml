@@ -1,0 +1,31 @@
+services:
+  stalwart:
+    image: stalwartlabs/mail-server:latest
+    container_name: stalwart
+    ports:
+      - "8080:8080" # WebAdmin and JMAP
+      - "25:25"     # SMTP
+      - "143:143"   # IMAP
+      - "465:465"   # SMTP TLS
+      - "587:587"   # SMTP StartTLS
+      - "993:993"   # IMAP TLS
+    volumes:
+      - ./stalwart/config:/opt/stalwart/config
+      - stalwart-data:/opt/stalwart/data
+      - stalwart-logs:/opt/stalwart/logs
+    environment:
+      - STALWART_RECOVERY_ADMIN=${ADMIN_MAIL:-admin@localhost}:${ADMIN_PASSWORD:-admin123}
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: webmail
+    ports:
+      - "80:80"     # Map Vue app to port 80
+    depends_on:
+      - stalwart
+    restart: unless-stopped
+
+volumes:
+  stalwart-data:
+  stalwart-logs:
