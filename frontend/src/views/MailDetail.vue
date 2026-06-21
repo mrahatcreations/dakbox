@@ -8,6 +8,10 @@
       width="280"
     >
       <template #prepend>
+        <div class="pa-4 pb-0 pl-6 d-flex align-center">
+          <v-img :src="iconImg" height="32" max-width="32" class="mr-3" alt="Dakbox"></v-img>
+          <span class="text-h6 font-weight-bold text-white tracking-tight">DakBox</span>
+        </div>
         <div class="pa-4 drawer-header">
           <div class="d-flex align-center ga-3">
             <v-avatar color="primary" size="44" style="cursor: pointer" @click="router.push('/')">
@@ -185,9 +189,10 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { jmap } from '../services/jmap'
+import { useRouter, useRoute } from 'vue-router'
 import { useMailStore } from '../stores/mail'
+import iconImg from '../assets/icon.png'
+import { jmap } from '../services/jmap'
 
 const route = useRoute()
 const router = useRouter()
