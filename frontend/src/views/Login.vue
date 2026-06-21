@@ -1,11 +1,8 @@
 <template>
   <div class="login-wrapper d-flex align-center justify-center">
     <v-card width="420" class="login-card pa-8" theme="dark">
-      <v-card-title class="text-center px-0 pb-6 pt-2">
-        <div class="icon-glow mb-4">
-          <v-icon size="40" color="primary">mdi-email-fast-outline</v-icon>
-        </div>
-        <h1 class="text-h4 font-weight-bold tracking-tight mb-1">Dakbox</h1>
+      <v-card-title class="text-center px-0 pb-6 pt-4">
+        <v-img src="/src/assets/logo.png" height="64" class="mb-4 mx-auto" alt="Dakbox Logo"></v-img>
         <p class="text-subtitle-2 text-medium-emphasis">Sign in to access your secure inbox</p>
       </v-card-title>
       
@@ -109,18 +106,6 @@ async function login() {
 }
 .login-card:hover {
   border-color: rgba(var(--v-theme-primary), 0.3) !important;
-}
-
-.icon-glow {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
-  background: rgba(var(--v-theme-primary), 0.1);
-  border: 1px solid rgba(var(--v-theme-primary), 0.2);
-  margin: 0 auto;
 }
 
 .tracking-tight {
