@@ -1,46 +1,5 @@
 <template>
-  <v-layout style="height: 100vh">
-    <v-navigation-drawer
-      v-model="store.drawer"
-      :temporary="$vuetify.display.mobile"
-      :permanent="!$vuetify.display.mobile"
-      width="280"
-    >
-      <template #prepend>
-        <div class="pa-4 pb-0 pl-6 d-flex align-center">
-          <v-img :src="iconImg" height="32" max-width="32" class="mr-3" alt="Dakbox"></v-img>
-          <span class="text-h6 font-weight-bold text-white tracking-tight">DakBox</span>
-        </div>
-        <div class="pa-4 drawer-header">
-          <div class="d-flex align-center ga-3">
-            <v-avatar color="primary" size="44" style="cursor: pointer" @click="router.push('/')">
-              <v-img v-if="profilePicture" :src="profilePicture" cover />
-              <span v-else class="text-white text-uppercase font-weight-bold text-subtitle-1">
-                {{ (profileName || username).charAt(0).toUpperCase() }}
-              </span>
-            </v-avatar>
-            <div class="text-truncate" style="cursor: pointer" @click="router.push('/')">
-              <div class="text-subtitle-2 font-weight-bold text-white leading-tight text-truncate" title="Go to Inbox to edit profile">
-                {{ profileName || username }}
-              </div>
-              <div class="text-caption text-medium-emphasis text-truncate">{{ emailAddress }}</div>
-            </div>
-          </div>
-        </div>
-      </template>
-
-      <v-list density="comfortable" nav class="px-2 py-4">
-        <v-list-item
-          prepend-icon="mdi-arrow-left"
-          title="Back to Inbox"
-          @click="$router.push('/inbox')"
-          class="rounded-lg"
-        />
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-main class="bg-canvas d-flex flex-column">
-      <v-container fluid class="pa-4 pa-sm-6 d-flex flex-column flex-grow-1" style="height: 100%; overflow: hidden">
+  <v-container fluid class="pa-4 pa-sm-6 d-flex flex-column flex-grow-1" style="height: 100%; overflow: hidden">
         <v-card class="flex-grow-1 d-flex flex-column mail-card" elevation="0">
           
           <!-- Header/Toolbar inside the Card -->
@@ -162,16 +121,14 @@ transporter.sendMail({
           </div>
         </v-card>
       </v-container>
-    </v-main>
-  </v-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTheme } from 'vuetify'
 import { useMailStore } from '../stores/mail'
-import iconImg from '../assets/icon.png'
+import { adminService } from '../services/admin'
 
 const router = useRouter()
 const store = useMailStore()
@@ -182,12 +139,8 @@ const accountId = localStorage.getItem('jmap_accountId') || '—'
 const username = ref(localStorage.getItem('jmap_username') || 'admin')
 const emailAddress = ref(username.value.includes('@') ? username.value : `${username.value}@localhost`)
 const profileName = ref(localStorage.getItem('jmap_profileName') || '')
-const profilePicture = ref(localStorage.getItem('jmap_profilePicture') || '')
 const hostname = window.location.hostname
 const hasDevAccess = ref(false)
-
-import { adminService } from '../services/admin'
-import { onMounted } from 'vue'
 
 onMounted(async () => {
   if (localStorage.getItem(`dev_access_${emailAddress.value}`) === 'true') {

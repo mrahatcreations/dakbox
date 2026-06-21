@@ -3,12 +3,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/login' },
+    { path: '/', redirect: '/inbox' },
     { path: '/login', name: 'Login', component: () => import('../views/Login.vue') },
-    { path: '/inbox', name: 'Inbox', component: () => import('../views/Inbox.vue'), meta: { requiresAuth: true } },
-    { path: '/mail/:id', name: 'MailDetail', component: () => import('../views/MailDetail.vue'), meta: { requiresAuth: true } },
-    { path: '/compose', name: 'Compose', component: () => import('../views/Compose.vue'), meta: { requiresAuth: true } },
-    { path: '/settings', name: 'Settings', component: () => import('../views/Settings.vue'), meta: { requiresAuth: true } },
+    { 
+      path: '/', 
+      component: () => import('../layouts/Layout.vue'),
+      meta: { requiresAuth: true },
+      children: [
+        { path: 'inbox', name: 'Inbox', component: () => import('../views/Inbox.vue') },
+        { path: 'mail/:id', name: 'MailDetail', component: () => import('../views/MailDetail.vue') },
+        { path: 'compose', name: 'Compose', component: () => import('../views/Compose.vue') },
+        { path: 'settings', name: 'Settings', component: () => import('../views/Settings.vue') }
+      ]
+    },
   ],
 })
 
