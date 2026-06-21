@@ -1,68 +1,96 @@
-# Dakbox: The Lightweight Open-Source Mail Server 🚀
+<p align="center">
+  <img src="frontend/src/assets/logo.png" alt="Dakbox Logo" height="150" />
+</p>
 
-Dakbox is an open-source, ultra-fast, and modern webmail interface built on top of **Stalwart Mail Server** and **Vue.js 3**. It is designed to be fully self-hosted, removing the complexity of maintaining bulky email stacks. 
+<h1 align="center">Dakbox</h1>
 
-If you want a premium, fast, and secure personal email server without paying monthly fees to Google or Microsoft, Dakbox is for you!
+<p align="center">
+  <strong>A modern, blazing-fast, self-hosted webmail client built on JMAP.</strong>
+</p>
 
-![Dakbox UI](https://via.placeholder.com/800x400?text=Dakbox+Webmail+UI)
-
-## 🌟 Features
-- **Incredibly Fast:** Uses JMAP (JSON Meta Application Protocol) instead of slow IMAP.
-- **Modern UI:** Built with Vue.js, Vuetify, and a premium "Glass/Soft" aesthetic design.
-- **Self-Hosted:** Deploy anywhere using Docker Compose.
-- **Built-in Security:** Automatic TLS, DKIM, DMARC, and SPF management via Stalwart Admin Panel.
-- **Lightweight:** No bulky backend. Just a static Vue frontend communicating directly with Stalwart.
-
-## 📦 Prerequisites
-- **Docker & Docker Compose** installed on your machine or VPS.
-- A registered domain name (e.g., `dakbox.com`).
+<p align="center">
+  <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D" alt="Vue.js">
+  <img src="https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=AEDDFF" alt="Vuetify">
+  <img src="https://img.shields.io/badge/Stalwart-Mail_Server-orange?style=for-the-badge" alt="Stalwart Mail Server">
+  <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
+</p>
 
 ---
 
-## 🛠️ Quick Setup (Local/Dev)
+## 📖 Overview
+
+**Dakbox** is an open-source, ultra-fast, and premium webmail interface designed to run alongside the [Stalwart Mail Server](https://stalw.art/). It drops the legacy baggage of IMAP and relies entirely on **JMAP (JSON Meta Application Protocol)** for instant synchronization and real-time responsiveness.
+
+If you are looking for a Google Workspace or Microsoft 365 alternative that you can host entirely on your own infrastructure with zero compromises on UI/UX, Dakbox is built for you.
+
+## ✨ Key Features
+
+- ⚡ **JMAP Native:** Built from the ground up to utilize JMAP for unparalleled speed and efficiency.
+- 🎨 **Premium Aesthetic:** A "Glassmorphism" inspired, highly polished Vue 3 & Vuetify interface.
+- 🛡️ **Enterprise Security:** Inherits Stalwart's robust security features including built-in DMARC, DKIM, SPF, and auto-TLS.
+- 🪶 **Zero Backend Footprint:** Pure static frontend. No Node.js or PHP backends required. The UI communicates directly with the Stalwart core.
+- 🐳 **Docker-Ready:** Deploy in minutes using Docker Compose or modern PaaS like Coolify.
+
+## 🚀 Quick Start (Local Development)
+
+### Prerequisites
+- Docker & Docker Compose
+- Node.js 18+ (for frontend development)
+
+### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/mrahatcreative/dakbox.git
+   git clone https://github.com/mrahatcreations/dakbox.git
    cd dakbox
    ```
 
-2. **Start the Mail Server:**
+2. **Spin up the Mail Server (Stalwart):**
    ```bash
    docker-compose up -d stalwart
    ```
-   *Note: This will expose ports 8080 (Admin), 25, 143, 465, 587, and 993.*
+   *Note: This starts the Stalwart core on ports `25`, `143`, `465`, `587`, `993`, and the Admin Panel on `8080`.*
 
-3. **Start the Frontend:**
+3. **Run the Frontend UI:**
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
-   Open `http://localhost:5174` in your browser. Since you have no accounts yet, click on **"First time setting up? Create Master Admin"** to access the Admin Panel (http://localhost:8080/admin).
+4. **Access the Application:**
+   Open `http://localhost:5174` in your browser. 
+   *(First-time setup: Click "Create Master Admin" to initialize your server via the Stalwart WebAdmin).*
 
----
+## 🌍 Production Deployment (Coolify / VPS)
 
-## 🚀 Production Deployment (Coolify / VPS)
+Deploying Dakbox to production is incredibly straightforward due to its containerized nature. We highly recommend using [Coolify](https://coolify.io/) or a similar Docker-native platform.
 
-Dakbox is ready for production and can easily be deployed using **Coolify** (or any Docker Compose environment).
-
-1. Connect this GitHub repository to Coolify.
-2. Select **Docker Compose** as the deployment method.
-3. In Coolify, configure your domains:
-   - For `frontend`: Set it to `mail.yourdomain.com` (Coolify will generate a free SSL certificate).
-   - For `stalwart`: You can optionally proxy port `8080` to `admin.yourdomain.com`.
-4. In Coolify's Environment Variables, set your master credentials:
+1. Connect this repository to your Coolify dashboard.
+2. Select **Docker Compose** as your deployment target.
+3. Configure your domains in the Coolify UI:
+   - Map `frontend` to `mail.yourdomain.com` (Coolify provides automated Let's Encrypt SSL).
+   - Map `stalwart` (Port 8080) to `admin.yourdomain.com`.
+4. Add the following to your Environment Variables:
    ```env
    ADMIN_MAIL=admin@yourdomain.com
-   ADMIN_PASSWORD=your_super_secret_password
+   ADMIN_PASSWORD=your_secure_password
    ```
-5. Deploy! Coolify will automatically bind the required email ports (25, 465, 993, etc.) to your host server.
-6. **DNS Setup**: Go to your Domain Registrar (Cloudflare/Namecheap) and create an `A` record pointing to your server IP, and update your `MX` records. 
+   *Stalwart will automatically provision this user on the first boot.*
+5. **Deploy!** The necessary email ports (25, 465, 993, etc.) will bind automatically to your host network.
+6. **DNS Configuration:** Ensure your domain's `A` record, `MX` records, and Reverse DNS (PTR) point to your server's IP address.
 
-*Once you've logged in and created your primary account, you can remove the `ADMIN_MAIL` environment variable for enhanced security.*
+> **Security Note:** Once your master account is created and you have configured your domains via the Admin Panel, it is recommended to remove the `ADMIN_MAIL` and `ADMIN_PASSWORD` environment variables.
 
 ## 🤝 Contributing
-Feel free to open issues, submit pull requests, or suggest new features!
 
-**License:** MIT
+We welcome contributions! Please follow these steps to contribute:
+1. Fork the repository.
+2. Create a new feature branch (`git checkout -b feature/amazing-feature`).
+3. Commit your changes (`git commit -m 'Add amazing feature'`).
+4. Push to the branch (`git push origin feature/amazing-feature`).
+5. Open a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
