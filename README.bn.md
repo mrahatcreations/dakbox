@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="frontend/src/assets/logo.png" alt="Dakbox Logo" height="150" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="frontend/src/assets/logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="frontend/src/assets/logo-light.png">
+    <img alt="Dakbox Logo" src="frontend/src/assets/logo-light.png" height="150">
+  </picture>
 </p>
 
 <h1 align="center">Dakbox (ডাকবক্স)</h1>
