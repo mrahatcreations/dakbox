@@ -85,17 +85,16 @@ Cloudflare's default proxy (Orange Cloud) **does not support email ports (25, 46
 ### Step 2: Coolify Deployment
 1. Connect this repository to your Coolify dashboard.
 2. Select **Docker Compose** as your deployment target.
-3. Add the following to your **Environment Variables** in Coolify:
+3. Configure your domains in the Coolify UI:
+   - For `frontend`, set the domain to `https://mail.yourdomain.com` (Coolify provides automated Let's Encrypt SSL).
+   - For `stalwart`, set the domain to `https://admin.yourdomain.com:8080`. (Adding `:8080` is **critical** so Coolify knows to route traffic to the admin port instead of the SMTP port).
+4. Add the following to your Environment Variables:
    ```env
-   STALWART_DOMAIN=admin.yourdomain.com
    ADMIN_MAIL=admin@yourdomain.com
    ADMIN_PASSWORD=your_secure_password
    ```
-   *Note: `STALWART_DOMAIN` is **required** to automatically configure the Traefik proxy for the Stalwart backend. Stalwart will also provision the admin user on the first boot.*
-4. Configure the frontend domain in the Coolify UI:
-   - Go to your `frontend` service settings.
-   - Set the domain to `https://mail.yourdomain.com` (Coolify provides automated Let's Encrypt SSL).
-5. **Deploy!** The proxy rules will automatically route `admin.yourdomain.com` to Stalwart's Admin Panel (Port 8080) and bind the necessary email ports (25, 465, 993, etc.) to your host network.
+   *Stalwart will automatically provision this user on the first boot.*
+5. **Deploy!** The necessary email ports (25, 465, 993, etc.) will bind automatically to your host network.
 
 > **Security Note:** Once your master account is created and you have configured your domains via the Admin Panel, it is recommended to remove the `ADMIN_MAIL` and `ADMIN_PASSWORD` environment variables.
 
