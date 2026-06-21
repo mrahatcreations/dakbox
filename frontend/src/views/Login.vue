@@ -2,7 +2,7 @@
   <div class="login-wrapper d-flex align-center justify-center">
     <v-card width="420" class="login-card pa-8" theme="dark">
       <v-card-title class="text-center px-0 pb-6 pt-4">
-        <v-img src="/src/assets/logo-dark.png" height="64" class="mb-4 mx-auto" alt="Dakbox Logo"></v-img>
+        <v-img :src="logoDark" height="64" class="mb-4 mx-auto" alt="Dakbox Logo"></v-img>
         <p class="text-subtitle-2 text-medium-emphasis">Sign in to access your secure inbox</p>
       </v-card-title>
       
@@ -64,6 +64,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { jmap } from '../services/jmap'
+import logoDark from '../assets/logo-dark.png'
 
 const router = useRouter()
 const username = ref('')
