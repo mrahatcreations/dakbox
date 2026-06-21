@@ -5,3 +5,4 @@ dist/
 stalwart/data/
 stalwart/logs/
 .env
+*.png
