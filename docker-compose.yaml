@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    build: ./frontend
+    image: ghcr.io/mrahatcreations/dakbox-frontend:latest
     container_name: webmail
     depends_on:
       - stalwart
