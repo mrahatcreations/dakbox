@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_STALWART_URL || ''
+const BASE = ''
 const USING = ['urn:ietf:params:jmap:core', 'urn:ietf:params:jmap:mail']
 const PROPS = ['id', 'subject', 'from', 'to', 'receivedAt', 'preview', 'hasAttachment', 'keywords', 'size', 'mailboxIds']
 
