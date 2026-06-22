@@ -42,19 +42,6 @@
           Sign In <v-icon end class="ml-1">mdi-arrow-right</v-icon>
         </v-btn>
         
-        <div class="text-center w-100 mt-2">
-          <span class="text-caption text-medium-emphasis">First time setting up?</span>
-          <v-btn
-            variant="text"
-            size="small"
-            color="primary"
-            class="text-none ml-1 px-2"
-            :href="adminUrl"
-            target="_blank"
-          >
-            Create Master Admin
-          </v-btn>
-        </div>
       </v-card-actions>
     </v-card>
   </div>
