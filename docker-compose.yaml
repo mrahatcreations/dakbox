@@ -3,3 +3,14 @@ services:
     build: ./frontend
     container_name: webmail
     restart: unless-stopped
+    environment:
+      - VITE_STALWART_URL=http://stalwart:8080
+    networks:
+      - coolify
+      - default
+
+networks:
+  coolify:
+    name: coolify
+    external: true
+
