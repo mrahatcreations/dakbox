@@ -4,7 +4,7 @@ services:
     container_name: webmail
     restart: unless-stopped
     environment:
-      - VITE_STALWART_URL=http://stalwart:8080
+      - STALWART_INTERNAL_URL=http://stalwart:8080
     networks:
       - coolify
       - default
