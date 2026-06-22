@@ -31,32 +31,37 @@ We need to install Stalwart as a completely independent Service so that its data
 1. Go to your Coolify dashboard.
 2. Navigate to **Services** -> **Add New Service**.
 3. Select **Docker Compose** (Custom).
-4. Paste the following official Stalwart configuration:
+4. Paste the following Stalwart configuration:
 
 ```yaml
 services:
   stalwart:
-    image: stalwartlabs/mail-server:latest
+    image: stalwartlabs/stalwart:latest
     container_name: stalwart
     restart: always
     ports:
-      - "25:25"
-      - "143:143"
-      - "465:465"
-      - "587:587"
-      - "993:993"
-      - "4190:4190"
+      - "25:25"     # SMTP
+      - "143:143"   # IMAP
+      - "465:465"   # SMTP TLS
+      - "587:587"   # SMTP StartTLS
+      - "993:993"   # IMAP TLS
+    expose:
+      - "8080"
     volumes:
-      - /opt/stalwart/data:/opt/stalwart/data
-      - /opt/stalwart/etc:/opt/stalwart/etc
+      - stalwart-etc-v3:/opt/stalwart-mail/etc
+      - stalwart-data-v3:/opt/stalwart-mail/data
+      - stalwart-logs-v3:/opt/stalwart-mail/logs
+
+volumes:
+  stalwart-etc-v3:
+  stalwart-data-v3:
+  stalwart-logs-v3:
 ```
 
 5. **CRITICAL:** Ensure the `container_name` remains exactly `stalwart`. The frontend relies on this exact name to communicate with the backend API.
 6. **Save** the service.
 7. In the Configuration page for the service, locate the **"Domains for stalwart"** field and enter your desired admin URL (e.g., `https://admin.saimum.org`).
 8. Click **Deploy**.
-
-> *Check the Deployment Logs for the Stalwart service to find your initial temporary Admin credentials!*
 
 ### Step 2: Install Dakbox (Frontend Application)
 
@@ -67,26 +72,6 @@ Now we install this repository as a standard web application.
 3. Configure the domain for this frontend (e.g., `https://smail.saimum.org`).
 4. Click **Deploy**.
 
-### How They Connect
+## How They Connect
 
-Coolify automatically places all resources on the same server into a shared internal Docker network (usually named `coolify`). 
-
-Because we named the backend container `stalwart` in Step 1, the Nginx configuration inside this Frontend application is programmed to securely route all API requests (`/api/` and `/jmap/`) internally to `http://stalwart:8080`. You do not need to configure any manual networking or API keys!
-
-## <img src="https://api.iconify.design/mdi/rocket-launch.svg" width="28" height="28" align="center"> Local Development
-
-To run the frontend locally while connecting to a remote or local Stalwart instance:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-If you are running Stalwart locally, ensure it is accessible on port `8080`. The local Vite server (`vite.config.ts`) is configured to proxy API requests to `localhost:8080` during development.
-
-## <img src="https://api.iconify.design/mdi/handshake.svg" width="28" height="28" align="center"> Contributing
-We welcome contributions! Please fork the repository and open a Pull Request.
-
-## <img src="https://api.iconify.design/mdi/file-document-outline.svg" width="28" height="28" align="center"> License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Coolify automatically places all resources on the same server into a shared internal Docker network (usually named `coolify`). Because we named the backend container `stalwart` in Step 1, the Nginx configuration inside this Frontend application securely routes all API requests (`/api/` and `/jmap/`) internally to `http://stalwart:8080`.
